@@ -1,0 +1,50 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MaxCounters
+{
+    class Solution
+    {
+
+    public static int[] solution(int N, int[] A)
+    {
+      int[] counters = new int[N];
+      int maxcount = 0;
+      for (int i=0; i < N; i++)
+      {
+        counters[i] = 0;
+      }
+
+      for (int i = 0; i<A.Length; i++)
+      {
+        if (A[i] >= 1 && A[i] <= N)
+          counters[A[i] - 1]++;
+
+        if (A[i] == N + 1)
+        {
+          maxcount += counters.Max();
+        }
+      }
+
+      for (int i=0; i < counters.Length; i++)
+      {
+        counters[i] +=maxcount;
+      }
+
+      return counters;
+
+      
+
+    }
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Hello World!");
+
+      Console.WriteLine(string.Join(",", solution(5, new int[] { 3, 4, 4, 6, 1, 4, 4, })));
+      Console.ReadLine();
+        }
+    }
+}
